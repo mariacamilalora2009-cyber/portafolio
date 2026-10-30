@@ -1,167 +1,302 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Maria Camila Lora Cárdenas — Portafolio</title>
+<meta name="description" content="Ingeniera electrónica y desarrolladora front-end en Andorra. Webs en React y Next.js, branding, marketing digital y automatización con IA.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --ink: #0F1115;
-    --surface: #171A21;
-    --surface2: #1F232C;
-    --ivory: #ECE9E2;
-    --muted: #8A8F98;
-    --copper: #C97A3D;
-    --teal: #5DD9C1;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    background: var(--ink);
-    color: var(--ivory);
-    font-family: 'Inter', sans-serif;
-    -webkit-font-smoothing: antialiased;
-  }
-  h1, h2, h3, .display { font-family: 'Space Grotesk', sans-serif; }
-  .mono { font-family: 'JetBrains Mono', monospace; }
-  a { color: inherit; text-decoration: none; }
-  section, footer { padding: 5rem 4rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
-  @media (max-width: 700px) { section, footer { padding: 3rem 1.5rem; } }
+:root{--bg:#f1f5f7;--ink:#10202b;--mute:#4d6070;--line:#c7d3db;--trace:#0b7a84;--card:#fff;--hot:#e8b923}
+@media (prefers-color-scheme:dark){:root{--bg:#0e1a22;--ink:#e8eef2;--mute:#9fb2c0;--line:#27404f;--trace:#3cc3cf;--card:#142530;--hot:#e8b923}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 "IBM Plex Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque","IBM Plex Sans",sans-serif;line-height:1.1;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--hot);outline-offset:3px}
+.wrap{max-width:1000px;margin:0 auto;padding:0 22px}
+header.top{display:flex;justify-content:space-between;align-items:center;padding:20px 0;font-weight:500}
+header.top nav{display:flex;gap:20px;font-size:15px}
+header.top a{text-decoration:none}
+header.top a:hover{text-decoration:underline}
+.hero{padding:40px 0 70px;display:grid;gap:30px}
+.hero h1{font-weight:800;font-size:clamp(46px,9vw,92px);letter-spacing:-.03em}
+.hero p{max-width:60ch;font-size:19px;color:var(--mute);margin:0}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{padding:13px 22px;border-radius:6px;text-decoration:none;font-weight:500;border:2px solid var(--ink)}
+.btn.main{background:var(--ink);color:var(--bg)}
+.trace{width:100%;height:auto;max-height:90px}
+.trace path{fill:none;stroke:var(--trace);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1400;stroke-dashoffset:1400;animation:draw 2.4s ease-out .3s forwards}
+.trace circle{fill:var(--bg);stroke:var(--trace);stroke-width:3}
+.trace .end{fill:var(--hot);stroke:var(--hot)}
+@keyframes draw{to{stroke-dashoffset:0}}
+@media (prefers-reduced-motion:reduce){.trace path{animation:none;stroke-dashoffset:0}html{scroll-behavior:auto}}
+section{padding:60px 0;border-top:1px solid var(--line)}
+section h2{font-size:clamp(30px,5vw,44px);margin-bottom:26px;font-weight:800;letter-spacing:-.02em}
+.steps{list-style:none;margin:0;padding:0 0 0 34px;border-left:3px solid var(--trace);display:grid;gap:30px}
+.steps li{position:relative}
+.steps li::before{content:"";position:absolute;left:-44px;top:6px;width:15px;height:15px;border-radius:50%;background:var(--bg);border:3px solid var(--trace)}
+.steps li:last-child::before{background:var(--hot);border-color:var(--hot)}
+.steps h3{font-size:24px;margin-bottom:6px}
+.steps p{margin:0;max-width:62ch;color:var(--mute)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;padding:0;margin:0;list-style:none}
+.chips li{padding:7px 14px;border:1.5px solid var(--line);border-radius:6px;background:var(--card);font-weight:500;font-size:15px}
+.grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(270px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:22px;display:flex;flex-direction:column;gap:8px}
+.card h3{font-size:21px}
+.card p{margin:0;color:var(--mute);font-size:15.5px}
+.card .tag{font-size:13.5px;font-weight:500;color:var(--trace)}
+.card a.go{margin-top:auto;padding-top:8px;font-weight:500;font-size:15px}
+.card.wide{grid-column:1/-1;border-color:var(--trace)}
+.contact p{max-width:55ch;color:var(--mute);margin:0 0 22px}
+.contact .links{display:grid;gap:8px;font-size:19px;font-weight:500}
+footer{padding:30px 0 50px;color:var(--mute);font-size:14.5px}
 
-  .eyebrow { font-size: 0.8rem; letter-spacing: 0.15em; color: var(--copper); text-transform: uppercase; }
-  .muted-eyebrow { font-size: 0.75rem; letter-spacing: 0.15em; color: var(--muted); text-transform: uppercase; }
-
-  .hero h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 500; line-height: 1.05; margin-top: 1.5rem; max-width: 700px; }
-  .hero p { max-width: 560px; margin-top: 1.5rem; color: var(--muted); font-size: 1.1rem; line-height: 1.6; }
-  .hero-ctas { margin-top: 2.5rem; display: flex; gap: 1rem; flex-wrap: wrap; }
-  .btn { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; padding: 0.85rem 1.5rem; border-radius: 999px; }
-  .btn-primary { background: var(--copper); color: var(--ink); font-weight: 500; }
-  .btn-outline { border: 1px solid rgba(255,255,255,0.2); }
-
-  h2.section-title { font-size: 2rem; font-weight: 500; margin-top: 0.75rem; }
-
-  .path-grid { margin-top: 4rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; position: relative; }
-  @media (max-width: 800px) { .path-grid { grid-template-columns: 1fr; } .trace-line { display: none; } }
-  .trace-line { position: absolute; top: 22px; left: 16%; right: 16%; height: 2px; border-top: 2px dashed var(--copper); }
-  .path-node { position: relative; }
-  .node-circle { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--copper); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; color: var(--copper); background: var(--ink); position: relative; z-index: 2; }
-  .path-node h3 { margin-top: 1rem; font-size: 1.25rem; font-weight: 500; }
-  .path-node p { margin-top: 0.5rem; font-size: 0.9rem; color: var(--muted); line-height: 1.5; }
-  .path-node .mono { margin-top: 1.25rem; display: block; }
-
-  .stack-tags { margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: 0.75rem; }
-  .tag { border: 1px solid rgba(255,255,255,0.15); background: var(--surface); padding: 0.5rem 1rem; border-radius: 999px; font-size: 0.75rem; }
-
-  .projects-note { max-width: 480px; margin-top: 0.75rem; font-size: 0.9rem; color: var(--muted); }
-  .project-grid { margin-top: 3rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; }
-  .card { border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; overflow: hidden; background: var(--surface); transition: border-color .2s; }
-  .card:hover { border-color: rgba(201,122,61,0.6); }
-  .card-media { aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; }
-  .card-media span { font-size: 2.5rem; font-weight: 500; color: rgba(255,255,255,0.1); font-family: 'Space Grotesk', sans-serif; }
-  .card-body { padding: 1.25rem; }
-  .card-body h3 { font-size: 1.05rem; font-weight: 500; }
-  .card-body p { margin-top: 0.5rem; font-size: 0.85rem; color: var(--muted); line-height: 1.5; }
-  .card-tags { margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.4rem; }
-  .card-tags span { background: var(--ink); color: var(--teal); font-size: 0.65rem; padding: 0.25rem 0.6rem; border-radius: 999px; font-family: 'JetBrains Mono', monospace; }
-
-  footer h2 { font-size: 1.5rem; font-weight: 500; }
-  .contact-row { margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: 2rem; font-size: 0.9rem; color: var(--muted); }
+/* Demos React */
+.note{color:var(--mute);max-width:62ch;margin:0 0 24px}
+.demo h3{margin-bottom:4px}
+.demo .sub{font-size:14.5px;color:var(--mute);margin:0 0 14px}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+label{display:grid;gap:4px;font-size:14px;font-weight:500}
+input{font:inherit;padding:9px 10px;border:1.5px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink);width:100%}
+button{font:inherit;font-weight:500;font-size:14.5px;padding:8px 12px;border:1.5px solid var(--ink);border-radius:6px;background:transparent;color:var(--ink);cursor:pointer}
+button:hover{background:var(--ink);color:var(--bg)}
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:16px 0 8px}
+.metrics div{border-top:3px solid var(--trace);padding-top:6px}
+.metrics dt{font-size:13px;color:var(--mute)}
+.metrics dd{margin:0;font:800 26px "Bricolage Grotesque",sans-serif}
+.verdict{margin:0;font-size:15px}
+.chat{display:grid;gap:8px;max-height:230px;overflow:auto;margin-bottom:10px}
+.bubble{margin:0;padding:8px 12px;border-radius:8px;font-size:15px;max-width:88%}
+.bubble.bot{background:var(--bg);border:1px solid var(--line)}
+.bubble.user{background:var(--trace);color:var(--card);justify-self:end}
+.quick{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.send{display:flex;gap:8px}
+.big{margin:0;font:800 52px "Bricolage Grotesque",sans-serif;line-height:1}
+.big span{font:500 17px "IBM Plex Sans",sans-serif;color:var(--mute)}
+.bars{display:flex;align-items:flex-end;gap:5px;height:90px;margin:14px 0 4px;border-bottom:2px solid var(--line)}
+.bars i{flex:1;background:var(--trace);min-height:2px;border-radius:2px 2px 0 0;transition:height .3s}
+.hint{margin:0;font-size:13px;color:var(--mute)}
+@media (prefers-reduced-motion:reduce){.bars i{transition:none}}
 </style>
 </head>
 <body>
+<div class="wrap">
+<header class="top">
+  <strong>Maria Camila Lora Cárdenas</strong>
+  <nav aria-label="Principal"><a href="#trayectoria">Trayectoria</a><a href="#proyectos">Proyectos</a><a href="#demos">Demos</a><a href="#contacto">Contacto</a></nav>
+</header>
 
-<section class="hero">
-  <p class="mono eyebrow">MARIA CAMILA LORA CÁRDENAS</p>
+<main>
+<div class="hero">
   <h1>De circuitos a interfaces.</h1>
-  <p>Ingeniera electrónica reconvertida a desarrolladora front-end. Construyo interfaces con React, Next.js y TypeScript — y entiendo los sistemas de automatización e IA que corren detrás de ellas.</p>
-  <div class="hero-ctas">
-    <a href="#proyectos" class="btn btn-primary">Ver proyectos</a>
-    <a href="mailto:mariacamilalora2009@gmail.com" class="btn btn-outline">Contactar</a>
+  <p>Ingeniera electrónica en Andorra. Desarrollo webs con React, Next.js y TypeScript, cuido la marca de cada cliente y entiendo la automatización y la IA que funcionan detrás de la pantalla.</p>
+  <div class="btns">
+    <a class="btn main" href="#proyectos">Ver proyectos</a>
+    <a class="btn" href="mailto:mariacamilalora2009@gmail.com">Escríbeme</a>
   </div>
+  <svg class="trace" viewBox="0 0 1000 90" aria-hidden="true">
+    <path d="M10 70 H200 L240 25 H470 L510 70 H760 L800 25 H960"/>
+    <circle cx="10" cy="70" r="7"/><circle cx="240" cy="25" r="7"/><circle cx="510" cy="70" r="7"/>
+    <circle class="end" cx="960" cy="25" r="8"/>
+  </svg>
+</div>
+
+<section id="trayectoria">
+  <h2>Un mismo circuito, tres etapas</h2>
+  <ol class="steps">
+    <li><h3>Ingeniería electrónica</h3><p>Universidad de la Costa, título homologado en Andorra. Circuitos, automatización industrial, IoT y proyectos como una contadora de botellas para una empresa de reciclaje. Aprendí a pensar en sistemas antes que en pantallas.</p></li>
+    <li><h3>Automatización con IA</h3><p>Flujos automatizados, chatbots y asistentes virtuales, además de auditoría y control de riesgo TI en Olímpica S.A. Ahí empecé a construir las interfaces que esos sistemas necesitaban para ser fáciles de usar.</p></li>
+    <li><h3>Desarrollo web y marketing, hoy</h3><p>Con Lora Web Studio y L&amp;M Novadigital creo webs, identidades de marca y campañas (SEO, Google Ads, Meta Ads) para clientes en Andorra y Europa.</p></li>
+  </ol>
 </section>
 
-<section>
-  <p class="mono muted-eyebrow">Trayectoria</p>
-  <h2 class="section-title">Un mismo circuito, tres etapas.</h2>
-  <div class="path-grid">
-    <div class="trace-line"></div>
-    <div class="path-node">
-      <div class="node-circle">01</div>
-      <span class="mono eyebrow">01 · ORIGEN</span>
-      <h3>Ingeniería Electrónica</h3>
-      <p>Circuitos, automatización industrial (PLC, SCADA), IoT y procesamiento de señales. Aprendí a pensar en sistemas antes de pensar en pantallas.</p>
-    </div>
-    <div class="path-node">
-      <div class="node-circle">02</div>
-      <span class="mono eyebrow">02 · TRANSICIÓN</span>
-      <h3>Automatización con IA</h3>
-      <p>Diseño de flujos automatizados, chatbots y asistentes virtuales. Empecé a construir las interfaces que esos sistemas necesitaban para ser usables.</p>
-    </div>
-    <div class="path-node">
-      <div class="node-circle">03</div>
-      <span class="mono eyebrow">03 · HOY</span>
-      <h3>Desarrollo Front-End</h3>
-      <p>React, Next.js y TypeScript. Sitios, dashboards e integraciones de IA construidos de principio a fin, con criterio de producto.</p>
-    </div>
-  </div>
-</section>
-
-<section>
-  <p class="mono muted-eyebrow">Stack</p>
-  <div class="stack-tags">
-    <span class="tag">React</span>
-    <span class="tag">Next.js</span>
-    <span class="tag">TypeScript</span>
-    <span class="tag">Tailwind CSS</span>
-    <span class="tag">HTML / CSS</span>
-    <span class="tag">Python</span>
-    <span class="tag">Git</span>
-    <span class="tag">IA aplicada (chatbots, automatización)</span>
-  </div>
+<section id="stack">
+  <h2>Stack</h2>
+  <ul class="chips">
+    <li>React</li><li>Next.js</li><li>TypeScript</li><li>Tailwind CSS</li><li>HTML / CSS</li><li>Python</li><li>Git</li><li>Chatbots e IA aplicada</li><li>SEO y Google Ads</li><li>Meta Ads</li>
+  </ul>
 </section>
 
 <section id="proyectos">
-  <p class="mono muted-eyebrow">Proyectos</p>
-  <h2 class="section-title">Trabajo reciente</h2>
-  <p class="projects-note">Reemplaza estas tarjetas con tus fotos reales en el proyecto Next.js — aquí es solo la vista previa.</p>
-  <div class="project-grid" id="grid"></div>
+  <h2>Trabajo reciente</h2>
+  <div class="grid">
+    <article class="card wide">
+      <span class="tag">Web, marca y redes</span>
+      <h3>Global House Immobiliària</h3>
+      <p>Inmobiliaria de Andorra. Diseñé la web, el logo, las tarjetas de contacto y las vallas publicitarias, y llevo la grabación, edición y contenido de su Instagram.</p>
+      <a class="go" href="https://globalhouseandorra.com/es">Ver la web</a>
+    </article>
+    <article class="card">
+      <span class="tag">Marketing y contenido</span>
+      <h3>Regiana Riedo Estética</h3>
+      <p>Contenido para Instagram basado en el antes y el después de cada clienta, para que el perfil mostrara resultados reales.</p>
+      <a class="go" href="https://instagram.com/regianariedoestetica">@regianariedoestetica</a>
+    </article>
+    <article class="card">
+      <span class="tag">Etiqueta de vino</span>
+      <h3>Galego Sorrinte</h3>
+      <p>Diseño de la etiqueta de la cosecha 2025 para Bodegas Marqués de Vizhoja.</p>
+    </article>
+    <article class="card">
+      <span class="tag">Identidad de marca</span>
+      <h3>F&amp;T Construccions</h3>
+      <p>Logo, tarjeta de visita y propuesta de rediseño con cascos y vestuario de obra.</p>
+    </article>
+    <article class="card">
+      <span class="tag">Identidad de marca</span>
+      <h3>L&amp;M Novadigital</h3>
+      <p>Creación de la identidad de mi propia empresa de marketing y programación.</p>
+    </article>
+    <article class="card">
+      <span class="tag">Logo</span>
+      <h3>Lancelott Devenish Fitness</h3>
+      <p>Logo para una marca personal de fitness.</p>
+    </article>
+    <article class="card">
+      <span class="tag">Redes sociales</span>
+      <h3>Petcareand</h3>
+      <p>Piezas gráficas para las redes de una veterinaria.</p>
+    </article>
+    <article class="card">
+      <span class="tag">Logo</span>
+      <h3>TM Immobiliària</h3>
+      <p>Logo para una inmobiliaria andorrana.</p>
+    </article>
+    <article class="card wide">
+      <span class="tag">Desarrollo y automatización</span>
+      <h3>Webs, dashboards y chatbots</h3>
+      <p>Unas diez webs y landing pages para clientes, dashboards internos (automatización, riesgo y control TI, gestión de clientes, métricas de marketing), un chatbot integrado en una web y un panel de automatización.</p>
+    </article>
+  </div>
 </section>
 
-<footer>
+<section id="demos">
+  <h2>Demos en React</h2>
+  <p class="note">Proyectos de práctica que construí con React para mostrar cómo trabajo con componentes y estado. No son trabajos de clientes y los datos son de ejemplo.</p>
+  <div class="grid" id="demos-root"><noscript>Activa JavaScript para ver las demos.</noscript></div>
+</section>
+
+<section id="contacto" class="contact">
   <h2>¿Construimos algo juntos?</h2>
-  <div class="contact-row mono">
+  <p>Trabajo en remoto y en horario europeo. Cuéntame qué necesitas y te respondo con un plan claro.</p>
+  <div class="links">
     <a href="mailto:mariacamilalora2009@gmail.com">mariacamilalora2009@gmail.com</a>
-    <span>3045343945</span>
-    <span>Colombia · Remoto</span>
+    <a href="tel:+573045343945">+57 304 534 3945</a>
+    <span>Andorra la Vella y Colombia · Remoto</span>
   </div>
-</footer>
+</section>
+</main>
 
+<footer>© 2026 Maria Camila Lora Cárdenas</footer>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/htm@3.1.1/dist/htm.js"></script>
 <script>
-  const projects = [
-    { title: "NL VIP Club — App de entrenamiento", desc: "Aplicación de entrenamiento personalizado: seguimiento de rutinas, progreso del usuario y planes de trabajo.", tech: ["React","Next.js","TypeScript"] },
-    { title: "Automatización de video para YouTube con IA", desc: "Herramienta que automatiza la generación y edición de videos para YouTube apoyada en IA.", tech: ["React","Next.js","TypeScript","IA"] },
-    { title: "Plataforma web para el sector bancario", desc: "Interfaz web para una entidad financiera (bajo NDA): gestión de usuarios y visualización segura de información.", tech: ["React","Next.js","TypeScript"] },
-    { title: "Plataforma inmobiliaria con visualización 3D", desc: "Sitio para venta de inmuebles con recorrido 3D de las propiedades.", tech: ["React","Next.js","TypeScript"] },
-    { title: "Sitios web para inmobiliarias (x4)", desc: "Catálogo de propiedades, formularios de contacto y captación de leads.", tech: ["React","Next.js","TypeScript"] },
-    { title: "Spicoloca — ventas y cursos online", desc: "E-commerce con venta de cursos online: catálogo, checkout y gestión de contenido.", tech: ["React","Next.js","TypeScript"] },
-    { title: "Sistema POS para empresas", desc: "Interfaz de punto de venta: transacciones, inventario y reportes (bajo NDA).", tech: ["React","Next.js","TypeScript"] },
-  ];
-  const grid = document.getElementById('grid');
-  projects.forEach((p, i) => {
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.innerHTML = `
-      <div class="card-media"><span>${String(i+1).padStart(2,'0')}</span></div>
-      <div class="card-body">
-        <h3>${p.title}</h3>
-        <p>${p.desc}</p>
-        <div class="card-tags">${p.tech.map(t => `<span>${t}</span>`).join('')}</div>
-      </div>`;
-    grid.appendChild(card);
-  });
-</script>
+const { useState, useEffect } = React;
+const html = htm.bind(React.createElement);
+const num = (v) => Number(String(v).replace(",", ".")) || 0;
+const norm = (s) => s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 
+function Roas() {
+  const [f, setF] = useState({ spend: "500", revenue: "1800", clicks: "900", impressions: "40000" });
+  const spend = num(f.spend), revenue = num(f.revenue), clicks = num(f.clicks), imp = num(f.impressions);
+  const roas = spend > 0 ? revenue / spend : 0;
+  const ctr = imp > 0 ? (clicks / imp) * 100 : 0;
+  const cpc = clicks > 0 ? spend / clicks : 0;
+  const verdict = roas === 0 ? "Introduce tu inversión y tus ingresos."
+    : roas < 1 ? "Ingresas menos de lo que inviertes: revisa público, anuncio y página de destino."
+    : roas < 3 ? "Hay retorno, pero ajustado. Compáralo con el margen real del producto."
+    : "Buen retorno. Prueba a escalar la inversión poco a poco y vigila el CPC.";
+  const fields = [["spend", "Inversión (€)"], ["revenue", "Ingresos (€)"], ["clicks", "Clics"], ["impressions", "Impresiones"]];
+  return html`<div>
+    <div className="fields">${fields.map(([k, l]) => html`<label key=${k}>${l}<input inputMode="decimal" value=${f[k]} onChange=${(e) => setF({ ...f, [k]: e.target.value })} /></label>`)}</div>
+    <dl className="metrics">
+      <div><dt>ROAS</dt><dd>${roas.toFixed(2)}x</dd></div>
+      <div><dt>CTR</dt><dd>${ctr.toFixed(2)}%</dd></div>
+      <div><dt>CPC</dt><dd>${cpc.toFixed(2)} €</dd></div>
+    </dl>
+    <p className="verdict">${verdict}</p>
+  </div>`;
+}
+
+const faqs = [
+  { keys: ["envio", "entrega", "tarda", "llega"], answer: "Enviamos en 24-48 h laborables. Recibirás un enlace de seguimiento por correo." },
+  { keys: ["devol", "cambio", "reembolso"], answer: "Tienes 30 días para devolver el producto sin dar explicaciones." },
+  { keys: ["pago", "tarjeta", "paypal", "pagar"], answer: "Aceptamos tarjeta, PayPal y transferencia." },
+  { keys: ["horario", "abierto", "atencion", "contacto"], answer: "Atendemos de lunes a viernes, de 9:00 a 18:00." },
+];
+const quick = ["¿Cuánto tarda el envío?", "¿Puedo devolver un producto?", "¿Cómo puedo pagar?"];
+
+function FaqBot() {
+  const [msgs, setMsgs] = useState([{ from: "bot", text: "Hola, soy el asistente de la tienda de ejemplo. ¿En qué te ayudo?" }]);
+  const [text, setText] = useState("");
+  const send = (q) => {
+    if (!q.trim()) return;
+    const hit = faqs.find((x) => x.keys.some((k) => norm(q).includes(k)));
+    const answer = hit ? hit.answer : "No tengo esa respuesta. Escríbenos a contacto@tienda-demo.com y te ayudamos.";
+    setMsgs((m) => [...m, { from: "user", text: q }, { from: "bot", text: answer }]);
+    setText("");
+  };
+  return html`<div>
+    <div className="chat" aria-live="polite">${msgs.map((m, i) => html`<p key=${i} className=${"bubble " + m.from}>${m.text}</p>`)}</div>
+    <div className="quick">${quick.map((q) => html`<button key=${q} type="button" onClick=${() => send(q)}>${q}</button>`)}</div>
+    <div className="send">
+      <input value=${text} onChange=${(e) => setText(e.target.value)} onKeyDown=${(e) => e.key === "Enter" && send(text)} placeholder="Escribe tu pregunta" aria-label="Escribe tu pregunta" />
+      <button type="button" onClick=${() => send(text)}>Enviar</button>
+    </div>
+  </div>`;
+}
+
+function Bottles() {
+  const [bars, setBars] = useState(Array(12).fill(0));
+  const [total, setTotal] = useState(0);
+  const [auto, setAuto] = useState(false);
+  const add = () => {
+    setTotal((t) => t + 1);
+    setBars((b) => b.map((v, i) => (i === b.length - 1 ? v + 1 : v)));
+  };
+  useEffect(() => {
+    if (!auto) return;
+    const sensor = setInterval(() => { if (Math.random() < 0.7) add(); }, 600);
+    const slot = setInterval(() => setBars((b) => [...b.slice(1), 0]), 5000);
+    return () => { clearInterval(sensor); clearInterval(slot); };
+  }, [auto]);
+  const max = Math.max(1, ...bars);
+  return html`<div>
+    <p className="big">${total}<span> botellas</span></p>
+    <div className="bars" role="img" aria-label="Botellas contadas en los últimos 60 segundos">${bars.map((v, i) => html`<i key=${i} style=${{ height: (v / max) * 100 + "%" }}></i>`)}</div>
+    <p className="hint">Cada barra = 5 segundos</p>
+    <div className="quick">
+      <button type="button" onClick=${add}>Simular botella</button>
+      <button type="button" onClick=${() => setAuto(!auto)}>${auto ? "Pausar sensor" : "Activar sensor"}</button>
+      <button type="button" onClick=${() => { setTotal(0); setBars(Array(12).fill(0)); }}>Reiniciar</button>
+    </div>
+  </div>`;
+}
+
+function Demos() {
+  return html`<${React.Fragment}>
+    <article className="card demo">
+      <span className="tag">Marketing digital</span><h3>Calculadora de campañas</h3>
+      <p className="sub">ROAS, CTR y CPC al instante para entender si un anuncio funciona.</p><${Roas} />
+    </article>
+    <article className="card demo">
+      <span className="tag">Chatbot</span><h3>Asistente de preguntas frecuentes</h3>
+      <p className="sub">Responde por palabras clave, sin depender de ningún servicio externo.</p><${FaqBot} />
+    </article>
+    <article className="card demo wide">
+      <span className="tag">Electrónica e IoT</span><h3>Panel de contador de botellas</h3>
+      <p className="sub">Simulación inspirada en mi proyecto de electrónica para una empresa de reciclaje.</p><${Bottles} />
+    </article>
+  <//>`;
+}
+
+ReactDOM.createRoot(document.getElementById("demos-root")).render(html`<${Demos} />`);
+</script>
 </body>
 </html>
